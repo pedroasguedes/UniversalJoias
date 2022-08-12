@@ -121,7 +121,12 @@ insert into usuarios (usuario,login,senha,perfil)
 values ('Linus Torvalds','tux',md5('123'),'user');
 
 select * from usuarios;
+select * from usuarios where login='admin' and senha=md5('123');
 
+delete from usuarios where iduser=3;
+
+update usuarios set usuario='Linus de Assis Torvalds',login="root",
+senha=md5("root"),perfil='admin' where iduser=3;
 
 create table pedidos (
 pedido int primary key auto_increment,
