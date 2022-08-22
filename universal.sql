@@ -26,8 +26,14 @@ insert into  fornecedores (cnpj,razao,fantasia,fone,cep,endereco,numero,bairro,c
  insert into  fornecedores (cnpj,razao,fantasia,fone,cep,endereco,numero,bairro,cidade,uf)
  values ('70.012.234/0001-43','AutoBots Ltda','Decepcon','(11) 99862-2377','78403-505','Rua Medeiros Forte','3','Jardim Sorrilândia I','São Paulo','SP');
 
+select * from fornecedores;
+select idfor,fantasia,fone from fornecedores;
+select idfor as ID ,fantasia as fornecedores,fone from fornecedores;
+
 select * from fornecedores inner join produtos
 on fornecedores.idfor = produtos.idfor;
+
+describe fornecedores;
 
  select
 produtos.codigo,
@@ -121,7 +127,7 @@ insert into usuarios (usuario,login,senha,perfil)
 values ('Linus Torvalds','tux',md5('123'),'user');
 
 select * from usuarios;
-select * from usuarios where login='admin' and senha=md5('123');
+select * from usuarios where login='admin' and senha=md5('admin');
 
 delete from usuarios where iduser=3;
 
