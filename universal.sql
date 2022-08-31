@@ -25,10 +25,15 @@ insert into  fornecedores (cnpj,razao,fantasia,fone,cep,endereco,numero,bairro,c
  values ('80.012.434/0001-43','Joias Raras','Optimum Apollo','(61) 3862-2377','58805-505','Rua Gastão Medeiros Forte','43','Jardim Sorrilândia III','Sousa','PB');
  insert into  fornecedores (cnpj,razao,fantasia,fone,cep,endereco,numero,bairro,cidade,uf)
  values ('70.012.234/0001-43','AutoBots Ltda','Decepcon','(11) 99862-2377','78403-505','Rua Medeiros Forte','3','Jardim Sorrilândia I','São Paulo','SP');
+insert into  fornecedores (cnpj,razao,fantasia,fone,cep,endereco,numero,bairro,cidade,uf)
+ values ('70.012.236/001-43','AutoPots Ltda','Decetcon','(11) 99363-2377','78413-505','Rua Madeiros Forte','3','Jardim Sorrilândia I','São Paulo','SP');
+
+
 
 select * from fornecedores;
 select idfor,fantasia,fone from fornecedores;
-select idfor as ID ,fantasia as fornecedores,fone from fornecedores;
+select idfor as ID ,fantasia as fornecedores,fone from fornecedores
+where fantasia like 'd%';
 
 select * from fornecedores inner join produtos
 on fornecedores.idfor = produtos.idfor;
@@ -87,23 +92,24 @@ select codigo as código,
 
 create table cliente (
  idcli int primary key auto_increment,
- nome varchar (255) not null,
- fone varchar(255) not null,
- cpf varchar(255) unique,
-email varchar(255),
-marketing varchar(255) not null,
-cep varchar(255),
-endereco varchar(255),
-bairro varchar(255),
-numero varchar(255),
-complemento varchar(255),
-cidade varchar(255),
+ nome varchar (30) not null,
+ fone varchar(30) not null,
+ cpf varchar(30) unique,
+email varchar(30),
+marketing varchar(30) not null,
+cep varchar(30),
+endereco varchar(30),
+bairro varchar(25),
+numero varchar(30),
+complemento varchar(30),
+cidade varchar(30),
 uf char(2)
 );
 insert into  cliente(nome,fone,cpf,email,marketing)
  values ('Marcos Vinicius Lucas Filipe Viana','(12) 3737-3469','103.061.809-79','marcosviniciusviana@mixfmmanaus.com.br','Sim');   
  insert into  cliente(nome,fone,cpf,email,marketing)
  values (' Vinicius Lucas Filipe Viana','(15) 0937-3469','103.0621.809-79','sviniciusviana@mixfmmanaus.com.br','Não');
+
 
  select * from cliente where marketing='Sim';
 
