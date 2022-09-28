@@ -1,4 +1,4 @@
-/**
+/**carrinhocarrinhocarrinho
 	Joalheria
 	@author Pedro Guedes
 	@version 1.0
@@ -25,9 +25,20 @@ insert into  fornecedores (cnpj,razao,fantasia,fone,cep,endereco,numero,bairro,c
  values ('80.012.434/0001-43','Joias Raras','Optimum Apollo','(61) 3862-2377','58805-505','Rua Gastão Medeiros Forte','43','Jardim Sorrilândia III','Sousa','PB');
  insert into  fornecedores (cnpj,razao,fantasia,fone,cep,endereco,numero,bairro,cidade,uf)
  values ('70.012.234/0001-43','AutoBots Ltda','Decepcon','(11) 99862-2377','78403-505','Rua Medeiros Forte','3','Jardim Sorrilândia I','São Paulo','SP');
+insert into  fornecedores (cnpj,razao,fantasia,fone,cep,endereco,numero,bairro,cidade,uf)
+ values ('70.012.236/001-43','AutoPots Ltda','Decetcon','(11) 99363-2377','78413-505','Rua Madeiros Forte','3','Jardim Sorrilândia I','São Paulo','SP');
+
+
+
+select * from fornecedores;
+select idfor,fantasia,fone from fornecedores;
+select idfor as ID ,fantasia as fornecedores,fone from fornecedores
+where fantasia like 'd%';
 
 select * from fornecedores inner join produtos
 on fornecedores.idfor = produtos.idfor;
+
+describe fornecedores;
 
  select
 produtos.codigo,
@@ -69,7 +80,7 @@ create table produtos(
     values ('5743459',' Anel Prata Espinélios e Topázios London','Rubi','Nagalli','20200513','47','100','UN','Cofre 9',1200,100,1900,2);
 
 select * from produtos;
-  
+
 select codigo as código,
      produto,
      date_format(dataval,'%d/%m/%Y') as data_validade,
@@ -81,17 +92,17 @@ select codigo as código,
 
 create table cliente (
  idcli int primary key auto_increment,
- nome varchar (255) not null,
- fone varchar(255) not null,
- cpf varchar(255) unique,
-email varchar(255),
-marketing varchar(255) not null,
-cep varchar(255),
-endereco varchar(255),
-bairro varchar(255),
-numero varchar(255),
-complemento varchar(255),
-cidade varchar(255),
+ nome varchar (30) not null,
+ fone varchar(30) not null,
+ cpf varchar(30) unique,
+email varchar(30),
+marketing varchar(30) not null,
+cep varchar(30),
+endereco varchar(30),
+bairro varchar(25),
+numero varchar(30),
+complemento varchar(30),
+cidade varchar(30),
 uf char(2)
 );
 insert into  cliente(nome,fone,cpf,email,marketing)
@@ -99,14 +110,15 @@ insert into  cliente(nome,fone,cpf,email,marketing)
  insert into  cliente(nome,fone,cpf,email,marketing)
  values (' Vinicius Lucas Filipe Viana','(15) 0937-3469','103.0621.809-79','sviniciusviana@mixfmmanaus.com.br','Não');
 
+describe cliente;
  select * from cliente where marketing='Sim';
 
 create table usuarios (
 	iduser int primary key auto_increment,
-    usuario varchar(10) not null,
-    login varchar(25) not null unique,
-    senha varchar(25) not null,
-    perfil varchar(25) not null
+    usuario varchar(255) not null,
+    login varchar(255) not null unique,
+    senha varchar(255) not null,
+    perfil varchar(255) not null
 );
 
 describe usuarios;
@@ -117,8 +129,16 @@ values ('administrador','admin',md5('admin'),'admin');
 insert into usuarios (usuario,login,senha,perfil)
 values ('pamela','pam',md5('123456'),'user');
 
-select * from usuarios;
+insert into usuarios (usuario,login,senha,perfil)
+values ('Linus Torvalds','tux',md5('123'),'user');
 
+select * from usuarios;
+select * from usuarios where login='admin' and senha=md5('admin');
+
+delete from usuarios where iduser=3;
+
+update usuarios set usuario='Linus de Assis Torvalds',login="root",
+senha=md5("root"),perfil='admin' where iduser=3;
 
 create table pedidos (
 pedido int primary key auto_increment,
@@ -169,7 +189,7 @@ inner join produtos
 on carrinho.codigo = produtos.codigo
 set produtos.estoque = produtos.estoque - carrinho.quantidade
 where carrinho.quantidade > 0;
-
+ describe fornecedores;
 
 
 
