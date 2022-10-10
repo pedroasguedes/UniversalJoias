@@ -16,12 +16,21 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblData;
-
+	public JButton btnUsuarios;
+	public JButton btnRelatorios;
+	public JPanel panelUsuario;
+	public JLabel lblUsuario;
+// atribuir o modificador publico
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -61,16 +70,19 @@ public class Principal extends JFrame {
 		contentPane.setLayout(null);
 		
 		lblData = new JLabel("");
-		lblData.setBounds(333, 376, 228, 29);
+		lblData.setHorizontalAlignment(SwingConstants.CENTER);
+		lblData.setForeground(Color.WHITE);
+		lblData.setBounds(192, 400, 228, 29);
 		contentPane.add(lblData);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Principal.class.getResource("/img/9035891_star_half_sharp_icon.png")));
-		lblNewLabel.setBounds(10, 311, 117, 94);
+		lblNewLabel.setBounds(0, 335, 117, 94);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.addActionListener(new ActionListener() {
+		btnUsuarios = new JButton("");
+		btnUsuarios.setEnabled(false);
+		btnUsuarios.addActionListener(new ActionListener() {
 			// evento clicar no botão
 			public void actionPerformed(ActionEvent e) {
 				// Link para o JDialog
@@ -78,10 +90,10 @@ public class Principal extends JFrame {
 				usuarios.setVisible(true);
 			}
 		});
-		btnNewButton.setToolTipText("Usuários");
-		btnNewButton.setIcon(new ImageIcon(Principal.class.getResource("/img/Users.png")));
-		btnNewButton.setBounds(10, 11, 128, 128);
-		contentPane.add(btnNewButton);
+		btnUsuarios.setToolTipText("Usuários");
+		btnUsuarios.setIcon(new ImageIcon(Principal.class.getResource("/img/Users.png")));
+		btnUsuarios.setBounds(10, 11, 128, 128);
+		contentPane.add(btnUsuarios);
 		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -120,17 +132,18 @@ public class Principal extends JFrame {
 		btnNewButton_3.setBounds(10, 150, 128, 128);
 		contentPane.add(btnNewButton_3);
 		
-		JButton btnNewButton_4 = new JButton("");
-		btnNewButton_4.addActionListener(new ActionListener() {
+		btnRelatorios = new JButton("");
+		btnRelatorios.setEnabled(false);
+		btnRelatorios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Relatorio relatorios = new Relatorio();
 				relatorios.setVisible(true);
 			}
 		});
-		btnNewButton_4.setToolTipText("relatório");
-		btnNewButton_4.setIcon(new ImageIcon(Principal.class.getResource("/img/1622837_analytics_docs_documents_graph_pdf_icon.png")));
-		btnNewButton_4.setBounds(170, 150, 128, 128);
-		contentPane.add(btnNewButton_4);
+		btnRelatorios.setToolTipText("relatório");
+		btnRelatorios.setIcon(new ImageIcon(Principal.class.getResource("/img/1622837_analytics_docs_documents_graph_pdf_icon.png")));
+		btnRelatorios.setBounds(170, 150, 128, 128);
+		contentPane.add(btnRelatorios);
 		
 		JButton btnNewButton_5 = new JButton("");
 		btnNewButton_5.addActionListener(new ActionListener() {
@@ -168,10 +181,17 @@ public class Principal extends JFrame {
 		btnNewButton_2_2.setBounds(486, 150, 128, 128);
 		contentPane.add(btnNewButton_2_2);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.activeCaption);
-		panel.setForeground(SystemColor.activeCaption);
-		panel.setBounds(10, 371, 604, 45);
-		contentPane.add(panel);
+		panelUsuario = new JPanel();
+		panelUsuario.setBackground(SystemColor.activeCaption);
+		panelUsuario.setForeground(Color.CYAN);
+		panelUsuario.setBounds(0, 395, 624, 45);
+		contentPane.add(panelUsuario);
+		
+		lblUsuario = new JLabel("New label");
+		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblUsuario.setBounds(506, 373, 108, 15);
+		contentPane.add(lblUsuario);
+		lblUsuario.setForeground(Color.BLACK);
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 12));
 	}
 }
